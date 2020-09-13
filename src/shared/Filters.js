@@ -14,7 +14,7 @@ const Filters = ({selectedYearOption,handleClickOnYear,selectedLaunchSuccessFilt
                 {yearsFilterOptions.map((item, index) => {
                   return (
                     <div key={index} className="filter_option">
-                      <div onClick={() => { handleClickOnYear(item) }} className={(selectedYearOption==item)?"filter_option_button selected":"filter_option_button"}>{item}</div>
+                      <button onClick={() => { handleClickOnYear(item) }} className={(selectedYearOption==item)?"filter_option_button selected":"filter_option_button"}>{item}</button>
                     </div>
                   )
                 })}
@@ -22,19 +22,19 @@ const Filters = ({selectedYearOption,handleClickOnYear,selectedLaunchSuccessFilt
               <div className="filter_title">Successful Launch</div>
               <div className="year_list">
                 <div className="filter_option">
-                  <div onClick={() => { handleClickOnLaunchSuccessFilter(true) }} className={(selectedLaunchSuccessFilter.value && selectedLaunchSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>True</div>
+                  <button onClick={() => { handleClickOnLaunchSuccessFilter(true) }} className={(selectedLaunchSuccessFilter.value && selectedLaunchSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>True</button>
                 </div>
-                <div onClick={() => { handleClickOnLaunchSuccessFilter(false) }} className="filter_option">
-                  <div onClick={() => { handleClickOnLaunchSuccessFilter(true) }} className={(!selectedLaunchSuccessFilter.value && selectedLaunchSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>False</div>
+                <div className="filter_option">
+                  <button onClick={() => { handleClickOnLaunchSuccessFilter(true) }} className={(!selectedLaunchSuccessFilter.value && selectedLaunchSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>False</button>
                 </div>
               </div>
               <div className="filter_title">Successful Landing</div>
               <div className="year_list">
                 <div className="filter_option">
-                  <div onClick={() => { handleClickOnLandingSuccessFilter(true) }} className={(selectedLandingSuccessFilter.value && selectedLandingSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>True</div>
+                  <button onClick={() => { handleClickOnLandingSuccessFilter(true) }} className={(selectedLandingSuccessFilter.value && selectedLandingSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>True</button>
                 </div>
                 <div className="filter_option">
-                  <div onClick={() => { handleClickOnLandingSuccessFilter(false) }} className={(!selectedLandingSuccessFilter.value && selectedLandingSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>False</div>
+                  <button onClick={() => { handleClickOnLandingSuccessFilter(false) }} className={(!selectedLandingSuccessFilter.value && selectedLandingSuccessFilter.isSelected)?"filter_option_button selected":"filter_option_button"}>False</button>
                 </div>
               </div>
             </CardBody>
