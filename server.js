@@ -37884,7 +37884,7 @@ var Filters = function Filters(_ref) {
                 __self: _this
               },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
+                'button',
                 { onClick: function onClick() {
                     handleClickOnYear(item);
                   }, className: selectedYearOption == item ? "filter_option_button selected" : "filter_option_button", __source: {
@@ -37925,7 +37925,7 @@ var Filters = function Filters(_ref) {
               __self: _this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
+              'button',
               { onClick: function onClick() {
                   handleClickOnLaunchSuccessFilter(true);
                 }, className: selectedLaunchSuccessFilter.value && selectedLaunchSuccessFilter.isSelected ? "filter_option_button selected" : "filter_option_button", __source: {
@@ -37939,16 +37939,14 @@ var Filters = function Filters(_ref) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { onClick: function onClick() {
-                handleClickOnLaunchSuccessFilter(false);
-              }, className: 'filter_option', __source: {
+            { className: 'filter_option', __source: {
                 fileName: _jsxFileName,
                 lineNumber: 27
               },
               __self: _this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
+              'button',
               { onClick: function onClick() {
                   handleClickOnLaunchSuccessFilter(true);
                 }, className: !selectedLaunchSuccessFilter.value && selectedLaunchSuccessFilter.isSelected ? "filter_option_button selected" : "filter_option_button", __source: {
@@ -37988,7 +37986,7 @@ var Filters = function Filters(_ref) {
               __self: _this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
+              'button',
               { onClick: function onClick() {
                   handleClickOnLandingSuccessFilter(true);
                 }, className: selectedLandingSuccessFilter.value && selectedLandingSuccessFilter.isSelected ? "filter_option_button selected" : "filter_option_button", __source: {
@@ -38009,7 +38007,7 @@ var Filters = function Filters(_ref) {
               __self: _this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
+              'button',
               { onClick: function onClick() {
                   handleClickOnLandingSuccessFilter(false);
                 }, className: !selectedLandingSuccessFilter.value && selectedLandingSuccessFilter.isSelected ? "filter_option_button selected" : "filter_option_button", __source: {
