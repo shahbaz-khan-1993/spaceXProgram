@@ -25,7 +25,7 @@ class SpacexLaunch extends Component {
 
   componentDidMount() {
     if (!this.state.launchData) {
-      launchData.requestInitialData().then(data => this.setState({ launchData: data }));
+      launchData.fetchInitialData().then(data => this.setState({ launchData: data }));
     }
   }
 
@@ -64,7 +64,6 @@ class SpacexLaunch extends Component {
   handleClickOnYear = (label) => {
     this.setState({ selectedYearOption: label }, () => { this.changeUrl() })
   }
-
 
   handleClickOnLaunchSuccessFilter = (value) => {
     var selectedLaunchSuccessFilter = Object.assign({}, this.state.selectedLaunchSuccessFilter)
