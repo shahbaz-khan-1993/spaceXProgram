@@ -1,13 +1,13 @@
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const autoprefixer = require("autoprefixer");
 const CompressionPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const browserConfig = {
   entry: "./src/browser/index.js",
   output: {
     path: __dirname,
-    filename: "./public/bundle.js"
+    publicPath : __dirname,
+    filename: "public/bundle.js"
   },
   devtool: "cheap-module-source-map",
   module: {
@@ -22,31 +22,22 @@ const browserConfig = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: "css-loader",
-              options: { importLoaders: 1 }
-            },
-            {
-              loader: "postcss-loader",
-              options: { plugins: [autoprefixer()] }
-            }
-          ]
-        })
+        use: [
+          {
+            loader: "css-loader/locals"
+          }
+        ]
       },
       {
         test: /js$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         loader: "babel-loader",
         query: { presets: ["react-app"] }
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: "public/css/[name].css"
-    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.BannerPlugin({
       banner: "__isBrowser__ = true;",
       raw: true,
@@ -58,8 +49,12 @@ const browserConfig = {
       test: /\.(js|css|html|svg)$/,
       threshold: 8192,
       minRatio: 0.8
-      })
-  ]
+    })
+  ],
+  optimization: {
+    minimize:true,
+    minimizer: [new TerserPlugin({})],
+  }
 };
 
 const serverConfig = {
@@ -68,7 +63,7 @@ const serverConfig = {
   output: {
     path: __dirname,
     filename: "server.js",
-    libraryTarget: "commonjs2"
+    libraryTarget: "commonjs2",
   },
   devtool: "cheap-module-source-map",
   module: {
@@ -92,13 +87,14 @@ const serverConfig = {
       },
       {
         test: /js$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         loader: "babel-loader",
         query: { presets: ["react-app"] }
       }
     ]
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.BannerPlugin({
       banner: "__isBrowser__ = false;",
       raw: true,
@@ -111,7 +107,11 @@ const serverConfig = {
       threshold: 8192,
       minRatio: 0.8
       })
-  ]
+  ],
+  optimization: {
+    minimize:true,
+    minimizer: [new TerserPlugin({})],
+  }
 };
 
 module.exports = [browserConfig, serverConfig];
